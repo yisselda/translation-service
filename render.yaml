@@ -1,8 +1,7 @@
 services:
   - type: web
     name: translation-service
-    env: python
+    env: docker
+    dockerfilePath: Dockerfile
     plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "uvicorn app.main:app --host=0.0.0.0 --port=10000"
-    autoDeploy: true
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port \$PORT
